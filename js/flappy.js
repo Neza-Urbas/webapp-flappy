@@ -52,7 +52,6 @@ $.get("/score", function(scores) {
         game.load.image("playerImg", "../assets/flappy_frog.png");
         game.load.audio("score", "../assets/point.ogg");
         game.load.image("pipe", "../assets/pipe_mint.png");
-        game.load.image("balloon")
     }
 
 
@@ -82,14 +81,14 @@ $.get("/score", function(scores) {
     }
 
     function generatePipe() {
-        var gapStart = game.rnd.integerInRange(1, 5);
-        for (var count = 0; count < 8; count++) {
-            if (count != gapStart && count != gapStart + 1 && count != gapStart + 2) {
-                addPipeBlock(750, count * 50);
-            }
+    var gapStart = game.rnd.integerInRange(1, 5);
+    for (var count = 0; count < 8; count++) {
+        if (count != gapStart && count != gapStart + 1 && count != gapStart + 2) {
+            addPipeBlock(750, count * 50);
         }
-        changeScore();
     }
+    changeScore();
+}
 
     function playerJump() {
         player.body.velocity.y = -180;
@@ -99,16 +98,11 @@ $.get("/score", function(scores) {
         score++;
         labelScore.setText(score.toString());
     }
-function changeGravity(g) {
-    gameGravity += g;                    1
-    player.body.gravity.y = gameGravity; 2
-}
 
     function gameOver() {
         game.destroy();
         $("#score").val(score.toString());
         $("#greeting").show();
-        gameGravity = 200;
     }
 
 
